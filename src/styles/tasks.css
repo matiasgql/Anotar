@@ -67,9 +67,9 @@ body {
 
 /* Container */
 .notion-container {
-  max-width: 100%;
+  max-width: 1600px;
   margin: 0 auto;
-  padding: 40px;
+  padding: 60px 40px;
 }
 
 /* Header */
@@ -77,14 +77,13 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
-  /* Native iOS/macOS header alignment */
-  margin-bottom: 24px;
+  margin-bottom: 40px;
 }
 
 .title {
-  font-size: 34px;
-  font-weight: 700;
-  letter-spacing: -0.5px;
+  font-size: 48px;
+  font-weight: 800;
+  letter-spacing: -0.03em;
   color: var(--text-primary);
   margin: 0;
 }
@@ -93,24 +92,23 @@ body {
   background-color: var(--primary-color);
   color: #ffffff;
   border: none;
-  padding: 8px 18px;
-  border-radius: 12px;
-  /* Apple Squircle simulation */
+  padding: 12px 24px;
+  border-radius: 14px;
   cursor: pointer;
   font-weight: 600;
   font-family: var(--font-main);
-  font-size: 15px;
+  font-size: 17px;
   transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
   box-shadow: 0 4px 12px rgba(0, 122, 255, 0.2);
 }
 
 .btn-new:hover {
   filter: brightness(1.1);
-  box-shadow: 0 6px 16px rgba(0, 122, 255, 0.3);
-  transform: translateY(-1px);
+  box-shadow: 0 8px 24px rgba(0, 122, 255, 0.3);
+  transform: translateY(-2px);
 }
 
 .btn-new:active {
@@ -118,7 +116,7 @@ body {
 }
 
 .btn-new span {
-  font-size: 18px;
+  font-size: 22px;
   font-weight: 400;
 }
 
@@ -127,24 +125,24 @@ body {
   background-color: hsla(2, 100%, 60%, 0.1);
   color: var(--danger-color);
   border: 1px solid hsla(2, 100%, 60%, 0.2);
-  padding: 8px 16px;
-  border-radius: 10px;
+  padding: 10px 20px;
+  border-radius: 12px;
   cursor: pointer;
   font-weight: 600;
   font-family: var(--font-main);
-  font-size: 13px;
+  font-size: 15px;
   transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 8px;
 }
 
 .btn-logout:hover {
   background-color: var(--danger-color);
   color: white;
   border-color: transparent;
-  transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(255, 59, 48, 0.2);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px rgba(255, 59, 48, 0.2);
 }
 
 .btn-logout:active {
@@ -156,11 +154,9 @@ body {
   background: var(--surface-color);
   backdrop-filter: var(--glass-blur);
   -webkit-backdrop-filter: var(--glass-blur);
-  border-radius: 18px;
-  /* Softer Apple Container */
+  border-radius: 24px;
   border: 1px solid var(--border-color);
   box-shadow: var(--shadow-md);
-  /* FIX: Remove overflow: hidden to allow dropdowns to spill out */
   overflow: visible;
   position: relative;
   z-index: 10;
@@ -169,7 +165,7 @@ body {
 .data-table {
   width: 100%;
   border-collapse: collapse;
-  font-size: 15px;
+  font-size: 17px;
   table-layout: fixed;
 }
 
@@ -478,6 +474,14 @@ body {
   background: var(--danger-color);
 }
 
+.mobile-only-delete {
+  display: none;
+}
+
+.desktop-only {
+  display: table-cell;
+}
+
 /* Animations */
 .task-row {
   animation: appleSlideIn 0.4s cubic-bezier(0.23, 1, 0.32, 1);
@@ -742,31 +746,34 @@ body {
 /* Mobile Responsiveness */
 @media (max-width: 850px) {
   .notion-container {
-    padding: 20px 10px;
+    padding: 24px 32px 24px 16px;
+    /* More space on the right (32px instead of 24px) */
   }
 
   .header-actions {
     flex-direction: column !important;
-    align-items: stretch !important;
-    gap: 15px;
-    margin-bottom: 20px;
+    align-items: center !important;
+    gap: 16px;
+    margin-bottom: 32px;
   }
 
   .title {
-    font-size: 28px !important;
-    text-align: center;
+    font-size: 36px !important;
+    margin-bottom: 8px;
   }
 
   .btn-new {
+    width: 100%;
     justify-content: center;
-    padding: 12px !important;
+    padding: 14px !important;
     font-size: 16px !important;
+    border-radius: 16px !important;
   }
 
   .btn-logout {
-    width: 100% !important;
-    justify-content: center !important;
-    margin-top: 10px !important;
+    width: auto !important;
+    padding: 8px 16px !important;
+    font-size: 14px !important;
   }
 
   .table-container {
@@ -794,23 +801,23 @@ body {
   .task-row {
     background: var(--surface-opaque) !important;
     border: 1px solid var(--border-color) !important;
-    border-radius: 16px !important;
-    margin-bottom: 16px !important;
+    border-radius: 20px !important;
+    margin-bottom: 24px !important;
     padding: 12px !important;
     box-shadow: var(--shadow-sm) !important;
     position: relative;
-    overflow: hidden;
   }
 
   .data-table td {
     border: none !important;
-    position: relative !important;
-    padding: 12px 0 12px 105px !important;
-    min-height: 48px !important;
+    padding: 8px 0 !important;
+    min-height: auto !important;
     display: flex !important;
-    align-items: center !important;
-    border-bottom: 1px solid hsla(0, 0%, 0%, 0.03) !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    border-bottom: 1px solid hsla(0, 0%, 0%, 0.04) !important;
     text-align: left !important;
+    position: relative !important;
   }
 
   @media (prefers-color-scheme: dark) {
@@ -825,52 +832,103 @@ body {
 
   .data-table td::before {
     content: attr(data-label);
-    position: absolute;
-    left: 10px;
-    width: 85px;
     font-size: 10px;
-    font-weight: 700;
+    font-weight: 800;
     text-transform: uppercase;
     color: var(--text-secondary);
-    letter-spacing: 0.5px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    letter-spacing: 0.05em;
+    margin-bottom: 8px;
+    /* Increased separation */
+    display: block;
+    position: static !important;
+    width: auto !important;
+    background: transparent !important;
+    padding: 0 !important;
+    margin-left: 0 !important;
+    z-index: 1;
   }
 
-  .actions-cell {
-    padding-left: 0 !important;
-    justify-content: flex-end !important;
-    border-top: 1px solid var(--border-color) !important;
-    margin-top: 8px !important;
-    padding-top: 12px !important;
+  /* Specific height reduction */
+  .data-table td[data-label="Tarea"],
+  .data-table td[data-label="Vencimiento"] {
+    padding-top: 4px !important;
+    padding-bottom: 4px !important;
   }
 
-  .actions-cell::before {
-    content: none !important;
+  .mobile-only-delete {
+    display: flex !important;
+    transform: scale(1.25) !important;
+    /* Scale up significantly */
+    z-index: 20 !important;
+    position: relative !important;
+    flex-shrink: 0 !important;
+    margin-left: 12px !important;
+  }
+
+  .desktop-only {
+    display: none !important;
+  }
+
+  .name-mobile-container {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    width: 100% !important;
+    gap: 15px !important;
+  }
+
+  .data-table td.actions-cell,
+  .data-table td.desktop-only {
+    display: none !important;
   }
 
   .cell-input {
-    font-size: 16px !important;
+    font-size: 17px !important;
+    padding: 4px 0 !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    background: transparent !important;
   }
 
-  .status-pill {
+  /* Fade effect container - Moved left to keep button clear */
+  .cell-input-wrapper {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .cell-input-wrapper::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 55px;
+    /* Wider fade */
+    height: 100%;
+    background: linear-gradient(to right, transparent, var(--surface-opaque));
+    pointer-events: none;
+    z-index: 5;
+  }
+
+  .status-pill,
+  .goal-container,
+  .datetime-container,
+  .custom-dropdown-container,
+  .tag-select {
     width: 100% !important;
     margin: 4px 0 !important;
   }
 
-  .progress-wrapper {
-    width: 100% !important;
-  }
-
-  .goal-container {
-    width: 100% !important;
-    justify-content: flex-start !important;
-  }
-
   .datetime-display {
-    padding: 10px !important;
+    padding: 8px 10px !important;
+    /* Reduced from 12px */
     font-size: 14px !important;
     background: var(--hover-bg) !important;
+    border-radius: 8px !important;
+  }
+
+  .progress-bar-bg {
+    height: 24px !important;
+    border-radius: 12px !important;
   }
 }

@@ -20,13 +20,24 @@ const TaskRow = memo(({ task, onUpdate, onDelete }) => {
     return (
         <tr className="task-row">
             <td data-label="Tarea">
-                <input
-                    type="text"
-                    className="cell-input"
-                    value={task.name}
-                    placeholder="Nombre de la tarea..."
-                    onChange={(e) => onUpdate(task.id, 'name', e.target.value)}
-                />
+                <div className="name-mobile-container">
+                    <div className="cell-input-wrapper">
+                        <input
+                            type="text"
+                            className="cell-input"
+                            value={task.name}
+                            placeholder="Nombre de la tarea..."
+                            onChange={(e) => onUpdate(task.id, 'name', e.target.value)}
+                        />
+                    </div>
+                    <button
+                        className="icon-btn-tiny delete mobile-only-delete"
+                        title="Delete task"
+                        onClick={() => onDelete(task.id)}
+                    >
+                        {ICONS.trash}
+                    </button>
+                </div>
             </td>
             <td data-label="Creada" className="cell-date">
                 {formatDate(task.createdAt)}
@@ -83,15 +94,17 @@ const TaskRow = memo(({ task, onUpdate, onDelete }) => {
                 )}
             </td>
             <td data-label="Descripción">
-                <input
-                    type="text"
-                    className="cell-input"
-                    value={task.description}
-                    placeholder="Descripción"
-                    onChange={(e) => onUpdate(task.id, 'description', e.target.value)}
-                />
+                <div className="cell-input-wrapper">
+                    <input
+                        type="text"
+                        className="cell-input"
+                        value={task.description}
+                        placeholder="Descripción"
+                        onChange={(e) => onUpdate(task.id, 'description', e.target.value)}
+                    />
+                </div>
             </td>
-            <td className="actions-cell">
+            <td className="actions-cell desktop-only">
                 <button className="icon-btn-tiny delete" title="Delete task" onClick={() => onDelete(task.id)}>
                     {ICONS.trash}
                 </button>
