@@ -738,3 +738,139 @@ body {
     transform: scale(0.8);
   }
 }
+
+/* Mobile Responsiveness */
+@media (max-width: 850px) {
+  .notion-container {
+    padding: 20px 10px;
+  }
+
+  .header-actions {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 15px;
+    margin-bottom: 20px;
+  }
+
+  .title {
+    font-size: 28px !important;
+    text-align: center;
+  }
+
+  .btn-new {
+    justify-content: center;
+    padding: 12px !important;
+    font-size: 16px !important;
+  }
+
+  .btn-logout {
+    width: 100% !important;
+    justify-content: center !important;
+    margin-top: 10px !important;
+  }
+
+  .table-container {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    padding: 0 !important;
+  }
+
+  .data-table,
+  .data-table thead,
+  .data-table tbody,
+  .data-table th,
+  .data-table td,
+  .data-table tr {
+    display: block !important;
+    width: 100% !important;
+  }
+
+  .data-table thead {
+    display: none !important;
+  }
+
+  .task-row {
+    background: var(--surface-opaque) !important;
+    border: 1px solid var(--border-color) !important;
+    border-radius: 16px !important;
+    margin-bottom: 16px !important;
+    padding: 12px !important;
+    box-shadow: var(--shadow-sm) !important;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .data-table td {
+    border: none !important;
+    position: relative !important;
+    padding: 12px 0 12px 105px !important;
+    min-height: 48px !important;
+    display: flex !important;
+    align-items: center !important;
+    border-bottom: 1px solid hsla(0, 0%, 0%, 0.03) !important;
+    text-align: left !important;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .data-table td {
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
+    }
+  }
+
+  .data-table td:last-child {
+    border-bottom: none !important;
+  }
+
+  .data-table td::before {
+    content: attr(data-label);
+    position: absolute;
+    left: 10px;
+    width: 85px;
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .actions-cell {
+    padding-left: 0 !important;
+    justify-content: flex-end !important;
+    border-top: 1px solid var(--border-color) !important;
+    margin-top: 8px !important;
+    padding-top: 12px !important;
+  }
+
+  .actions-cell::before {
+    content: none !important;
+  }
+
+  .cell-input {
+    font-size: 16px !important;
+  }
+
+  .status-pill {
+    width: 100% !important;
+    margin: 4px 0 !important;
+  }
+
+  .progress-wrapper {
+    width: 100% !important;
+  }
+
+  .goal-container {
+    width: 100% !important;
+    justify-content: flex-start !important;
+  }
+
+  .datetime-display {
+    padding: 10px !important;
+    font-size: 14px !important;
+    background: var(--hover-bg) !important;
+  }
+}

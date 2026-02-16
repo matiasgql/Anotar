@@ -19,7 +19,7 @@ const TaskRow = memo(({ task, onUpdate, onDelete }) => {
 
     return (
         <tr className="task-row">
-            <td>
+            <td data-label="Tarea">
                 <input
                     type="text"
                     className="cell-input"
@@ -28,22 +28,22 @@ const TaskRow = memo(({ task, onUpdate, onDelete }) => {
                     onChange={(e) => onUpdate(task.id, 'name', e.target.value)}
                 />
             </td>
-            <td className="cell-date">
+            <td data-label="Creada" className="cell-date">
                 {formatDate(task.createdAt)}
             </td>
-            <td>
+            <td data-label="Vencimiento">
                 <DateTimePicker
                     value={task.dueDate}
                     onUpdate={(newVal) => onUpdate(task.id, 'dueDate', newVal)}
                 />
             </td>
-            <td>
+            <td data-label="Prioridad">
                 <PriorityDropdown
                     value={task.priority}
                     onUpdate={(newPriority) => onUpdate(task.id, 'priority', newPriority)}
                 />
             </td>
-            <td className="progress-cell">
+            <td data-label="Progreso" className="progress-cell">
                 {!isGoalMode ? (
                     <div className="progress-wrapper">
                         <button
@@ -57,7 +57,7 @@ const TaskRow = memo(({ task, onUpdate, onDelete }) => {
                     <ProgressBar progress={task.progress} goal={task.goal} />
                 )}
             </td>
-            <td className="goal-cell">
+            <td data-label="Meta" className="goal-cell">
                 {!isGoalMode ? (
                     <div className="goal-cell-content">
                         <button className="ghost-btn" onClick={() => onUpdate(task.id, 'goal', 10)}>Añadir Meta</button>
@@ -82,7 +82,7 @@ const TaskRow = memo(({ task, onUpdate, onDelete }) => {
                     </div>
                 )}
             </td>
-            <td>
+            <td data-label="Descripción">
                 <input
                     type="text"
                     className="cell-input"
@@ -91,7 +91,7 @@ const TaskRow = memo(({ task, onUpdate, onDelete }) => {
                     onChange={(e) => onUpdate(task.id, 'description', e.target.value)}
                 />
             </td>
-            <td>
+            <td className="actions-cell">
                 <button className="icon-btn-tiny delete" title="Delete task" onClick={() => onDelete(task.id)}>
                     {ICONS.trash}
                 </button>
