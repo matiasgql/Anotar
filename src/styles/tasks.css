@@ -1,0 +1,740 @@
+:root {
+  /* Apple System Colors - Refined HSL */
+  --bg-color: hsl(240, 15%, 96%);
+  /* iOS Grouped Background Light */
+  --surface-color: hsla(0, 0%, 100%, 0.7);
+  --surface-opaque: hsl(0, 0%, 100%);
+  --text-primary: hsl(240, 10%, 10%);
+  --text-secondary: hsla(240, 5%, 33%, 0.6);
+  --border-color: hsla(0, 0%, 0%, 0.1);
+  --hover-bg: hsla(0, 0%, 0%, 0.04);
+
+  --primary-color: hsl(211, 100%, 50%);
+  /* San Francisco Blue */
+  --accent-color: hsl(280, 68%, 60%);
+  --danger-color: hsl(2, 100%, 60%);
+  --success-color: hsl(138, 56%, 49%);
+  --warning-color: hsl(35, 100%, 50%);
+
+  --font-main: "SF Pro Text", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+
+  /* Priority Backgrounds (Refined HSL) */
+  --priority-low-bg: hsla(138, 56%, 49%, 0.12);
+  --priority-low-text: hsl(138, 56%, 35%);
+  --priority-medium-bg: hsla(35, 100%, 50%, 0.12);
+  --priority-medium-text: hsl(35, 100%, 35%);
+  --priority-high-bg: hsla(2, 100%, 60%, 0.12);
+  --priority-high-text: hsl(2, 100%, 40%);
+  --priority-urgent-bg: hsla(280, 68%, 60%, 0.12);
+  --priority-urgent-text: hsl(280, 68%, 45%);
+
+  /* Shadows - Layered for realism */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.02), 0 2px 4px rgba(0, 0, 0, 0.02);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.03), 0 12px 24px rgba(0, 0, 0, 0.03);
+  --shadow-lg: 0 20px 40px rgba(0, 0, 0, 0.04);
+
+  --glass-blur: blur(25px) saturate(200%);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg-color: #000000;
+    --surface-color: rgba(28, 28, 30, 0.7);
+    --surface-opaque: #1c1c1e;
+    --text-primary: #ffffff;
+    --text-secondary: #ebebf5;
+    --border-color: rgba(255, 255, 255, 0.15);
+    --hover-bg: rgba(255, 255, 255, 0.08);
+
+    --priority-low-text: #32d74b;
+    --priority-medium-text: #ffd60a;
+    --priority-high-text: #ff453a;
+    --priority-urgent-text: #bf5af2;
+  }
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-primary);
+  font-family: var(--font-main);
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.4;
+  transition: background-color 0.3s;
+}
+
+/* Container */
+.notion-container {
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 40px;
+}
+
+/* Header */
+.header-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  /* Native iOS/macOS header alignment */
+  margin-bottom: 24px;
+}
+
+.title {
+  font-size: 34px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.btn-new {
+  background-color: var(--primary-color);
+  color: #ffffff;
+  border: none;
+  padding: 8px 18px;
+  border-radius: 12px;
+  /* Apple Squircle simulation */
+  cursor: pointer;
+  font-weight: 600;
+  font-family: var(--font-main);
+  font-size: 15px;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 4px 12px rgba(0, 122, 255, 0.2);
+}
+
+.btn-new:hover {
+  filter: brightness(1.1);
+  box-shadow: 0 6px 16px rgba(0, 122, 255, 0.3);
+  transform: translateY(-1px);
+}
+
+.btn-new:active {
+  transform: scale(0.96);
+}
+
+.btn-new span {
+  font-size: 18px;
+  font-weight: 400;
+}
+
+/* Secondary / Apple Style Logout Button */
+.btn-logout {
+  background-color: hsla(2, 100%, 60%, 0.1);
+  color: var(--danger-color);
+  border: 1px solid hsla(2, 100%, 60%, 0.2);
+  padding: 8px 16px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 600;
+  font-family: var(--font-main);
+  font-size: 13px;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.btn-logout:hover {
+  background-color: var(--danger-color);
+  color: white;
+  border-color: transparent;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(255, 59, 48, 0.2);
+}
+
+.btn-logout:active {
+  transform: scale(0.96);
+}
+
+/* Table Card */
+.table-container {
+  background: var(--surface-color);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border-radius: 18px;
+  /* Softer Apple Container */
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-md);
+  /* FIX: Remove overflow: hidden to allow dropdowns to spill out */
+  overflow: visible;
+  position: relative;
+  z-index: 10;
+}
+
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 15px;
+  table-layout: fixed;
+}
+
+.data-table th {
+  text-align: left;
+  font-weight: 600;
+  color: var(--text-secondary);
+  border-bottom: 1px solid var(--border-color);
+  padding: 12px 14px;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  background-color: rgba(0, 0, 0, 0.02);
+}
+
+.data-table td {
+  border-bottom: 1px solid var(--border-color);
+  padding: 10px 14px;
+  vertical-align: middle;
+  /* FIX: Ensure cell doesn't trap dropdowns */
+  position: relative;
+}
+
+.data-table tr:last-child td {
+  border-bottom: none;
+}
+
+/* Input Fields */
+.cell-input {
+  width: 100%;
+  border: none;
+  background: transparent;
+  color: var(--text-primary);
+  font-family: var(--font-main);
+  font-size: 15px;
+  padding: 6px 4px;
+  border-radius: 6px;
+  transition: background-color 0.2s;
+  box-sizing: border-box;
+}
+
+.cell-input:focus {
+  background-color: rgba(0, 0, 0, 0.03);
+  outline: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  .cell-input:focus {
+    background-color: rgba(255, 255, 255, 0.05);
+  }
+}
+
+.cell-date {
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+/* Tags / Selects */
+.tag-select {
+  appearance: none;
+  border: none;
+  border-radius: 6px;
+  padding: 4px 10px;
+  font-size: 13px;
+  cursor: pointer;
+  font-weight: 500;
+  outline: none;
+  width: auto;
+  text-align: center;
+  text-align-last: center;
+  height: 26px;
+  box-sizing: border-box;
+  transition: opacity 0.2s;
+}
+
+.tag-select:hover {
+  opacity: 0.8;
+}
+
+.tag-low {
+  background: var(--priority-low-bg);
+  color: var(--priority-low-text);
+}
+
+.tag-medium {
+  background: var(--priority-medium-bg);
+  color: var(--priority-medium-text);
+}
+
+.tag-high {
+  background: var(--priority-high-bg);
+  color: var(--priority-high-text);
+}
+
+.tag-urgent {
+  background: var(--priority-urgent-bg);
+  color: var(--priority-urgent-text);
+}
+
+/* Progress & Goal Styles */
+.progress-wrapper {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 26px;
+}
+
+/* Binary Status Pill */
+.status-pill {
+  border: none;
+  border-radius: 13px;
+  padding: 0 14px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  height: 26px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+  font-family: var(--font-main);
+  text-transform: none;
+  min-width: 90px;
+}
+
+.status-pill.incomplete {
+  background-color: rgba(60, 60, 67, 0.12);
+  /* More distinct Apple-style tray background */
+  color: var(--text-secondary);
+}
+
+.status-pill.completed {
+  background-color: var(--success-color);
+  color: white;
+}
+
+.status-pill:hover {
+  transform: scale(1.03);
+}
+
+/* Numeric Progress Bar (Thick) */
+.progress-bar-bg {
+  width: 100%;
+  height: 18px;
+  background-color: var(--border-color);
+  border-radius: 9px;
+  /* Squircle adjacent */
+  overflow: hidden;
+  position: relative;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.progress-bar-fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background-color: var(--primary-color);
+  width: 0%;
+  transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 1;
+}
+
+.progress-bar-fill.achieved {
+  background-color: var(--success-color);
+}
+
+.progress-text {
+  position: relative;
+  z-index: 2;
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--text-primary);
+  pointer-events: none;
+  text-align: center;
+  /* Use mix-blend-mode for automatic contrast based on fill background */
+  mix-blend-mode: normal;
+}
+
+/* Goal Column Styles */
+.goal-cell-content {
+  display: flex;
+  align-items: center;
+}
+
+.goal-container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: var(--text-secondary);
+}
+
+.stepper-group {
+  display: flex;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.03);
+  border-radius: 6px;
+  padding: 0;
+  height: 28px;
+  box-sizing: border-box;
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+}
+
+@media (prefers-color-scheme: dark) {
+  .stepper-group {
+    background-color: rgba(255, 255, 255, 0.05);
+  }
+}
+
+.stepper-group.vertical {
+  padding-right: 0;
+}
+
+.stepper-controls {
+  display: flex;
+  flex-direction: column;
+  border-left: 1px solid var(--border-color);
+  background-color: var(--border-color);
+  gap: 1px;
+}
+
+.step-btn {
+  background: var(--surface-opaque);
+  border: none;
+  color: var(--primary-color);
+  width: 20px;
+  height: 13.5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 8px;
+  transition: background 0.2s;
+}
+
+.step-btn:hover {
+  background-color: var(--hover-bg);
+}
+
+.goal-input {
+  width: 32px;
+  border: none;
+  background: transparent;
+  text-align: center;
+  color: var(--text-primary);
+  font-size: 14px;
+  font-weight: 600;
+  outline: none;
+  padding: 0 4px;
+  appearance: textfield;
+  -moz-appearance: textfield;
+}
+
+.goal-input::-webkit-outer-spin-button,
+.goal-input::-webkit-inner-spin-button {
+  appearance: none;
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Buttons */
+.ghost-btn {
+  background: transparent;
+  border: 1px solid var(--primary-color);
+  color: var(--primary-color);
+  padding: 4px 12px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.ghost-btn:hover {
+  background: var(--primary-color);
+  color: white;
+}
+
+.icon-btn-tiny {
+  background: var(--hover-bg);
+  border: none;
+  color: var(--primary-color);
+  cursor: pointer;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  /* Squircle adjacent */
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.icon-btn-tiny:hover {
+  background: var(--primary-color);
+  color: white;
+  transform: scale(1.1);
+}
+
+.icon-btn-tiny.delete:hover {
+  background: var(--danger-color);
+}
+
+/* Animations */
+.task-row {
+  animation: appleSlideIn 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+@keyframes appleSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Custom Dropdown Styling */
+.custom-dropdown-container {
+  position: relative;
+  display: inline-block;
+  width: auto;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%) translateY(8px);
+  background: var(--surface-opaque);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  box-shadow: var(--shadow-md);
+  z-index: 1000;
+  min-width: 140px;
+  padding: 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  animation: appleDropdownFade 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes appleDropdownFade {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(4px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(8px);
+  }
+}
+
+.dropdown-item {
+  padding: 8px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: background 0.2s;
+  color: var(--text-primary);
+}
+
+.dropdown-item:hover {
+  background: var(--hover-bg);
+}
+
+.dropdown-item.active {
+  background: var(--primary-color);
+  color: white;
+}
+
+.dropdown-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 999;
+}
+
+/* DateTimePicker Styling */
+.datetime-container {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+}
+
+.datetime-display {
+  width: 100%;
+  cursor: pointer;
+  padding: 6px 8px;
+  border-radius: 8px;
+  background: var(--hover-bg);
+  border: 1px solid transparent;
+  font-size: 13px;
+  color: var(--text-primary);
+  text-align: left;
+  transition: all 0.2s;
+  box-sizing: border-box;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.datetime-display:hover {
+  background: rgba(0, 0, 0, 0.08);
+}
+
+.datetime-picker-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  transform: translateY(8px);
+  background: var(--surface-opaque);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  box-shadow: var(--shadow-md);
+  z-index: 1001;
+  width: 280px;
+  padding: 16px;
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  animation: appleDropdownFade 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  box-sizing: border-box;
+}
+
+.calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.calendar-header span {
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 4px;
+  margin-bottom: 16px;
+}
+
+.calendar-day-head {
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--text-secondary);
+  text-align: center;
+  padding: 4px 0;
+}
+
+.calendar-day {
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.calendar-day:hover {
+  background: var(--hover-bg);
+}
+
+.calendar-day.selected {
+  background: var(--primary-color);
+  color: white !important;
+  font-weight: 600;
+}
+
+.calendar-day.today {
+  color: var(--primary-color);
+  font-weight: 700;
+  box-shadow: inset 0 0 0 1px var(--primary-color);
+}
+
+.time-picker-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 12px;
+  border-top: 1px solid var(--border-color);
+}
+
+.time-picker-section span {
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.time-inputs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.time-inputs .stepper-group {
+  width: auto;
+}
+
+.time-inputs .goal-input {
+  width: 40px;
+}
+
+.time-separator {
+  font-weight: 700;
+  color: var(--text-secondary);
+  font-size: 18px;
+}
+
+.datetime-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.calendar-nav-btn {
+  background: transparent;
+  border: none;
+  color: var(--primary-color);
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+}
+
+.calendar-nav-btn:hover {
+  background: var(--hover-bg);
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 0.4;
+    transform: scale(0.8);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.1);
+  }
+
+  100% {
+    opacity: 0.4;
+    transform: scale(0.8);
+  }
+}
