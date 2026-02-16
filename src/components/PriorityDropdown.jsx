@@ -40,7 +40,7 @@ const PriorityDropdown = ({ value, onUpdate }) => {
                                 className={`dropdown-item ${priority.id === value ? 'active' : ''}`}
                                 onClick={() => handleSelect(priority.id)}
                             >
-                                <span className={`tag-select ${priority.className}`} style={{ width: '12px', height: '12px', padding: 0, borderRadius: '50%', flexShrink: 0 }} />
+                                <span className={`priority-dot ${priority.className}`} />
                                 {priority.label}
                             </div>
                         ))}
