@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+
 :root {
   /* Apple System Colors - Refined HSL */
   --bg-color: hsl(240, 15%, 96%);
@@ -63,6 +67,8 @@ body {
   -moz-osx-font-smoothing: grayscale;
   line-height: 1.4;
   transition: background-color 0.3s;
+  overflow-x: hidden;
+  /* Prevent horizontal scroll on body */
 }
 
 /* Container */
@@ -164,6 +170,8 @@ body {
 
 .data-table {
   width: 100%;
+  max-width: 100%;
+  /* Ensure it doesn't push out of parent */
   border-collapse: collapse;
   font-size: 17px;
   table-layout: fixed;
@@ -227,7 +235,7 @@ body {
 .tag-select {
   appearance: none;
   border: none;
-  border-radius: 6px;
+  border-radius: 13px;
   padding: 4px 10px;
   font-size: 13px;
   cursor: pointer;
@@ -746,8 +754,10 @@ body {
 /* Mobile Responsiveness */
 @media (max-width: 850px) {
   .notion-container {
-    padding: 24px 32px 24px 16px;
-    /* More space on the right (32px instead of 24px) */
+    padding: 24px 16px !important;
+    width: 100% !important;
+    max-width: 100vw !important;
+    overflow-x: hidden !important;
   }
 
   .header-actions {
@@ -755,6 +765,12 @@ body {
     align-items: center !important;
     gap: 16px;
     margin-bottom: 32px;
+    width: 100% !important;
+  }
+
+  .header-actions>div {
+    justify-content: center !important;
+    width: 100% !important;
   }
 
   .title {
@@ -914,9 +930,12 @@ body {
   .goal-container,
   .datetime-container,
   .custom-dropdown-container,
-  .tag-select {
+  .tag-select,
+  .goal-cell-content,
+  .ghost-btn {
     width: 100% !important;
     margin: 4px 0 !important;
+    justify-content: center !important;
   }
 
   .datetime-display {

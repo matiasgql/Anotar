@@ -119,7 +119,7 @@ const TaskApp = () => {
                             <th style={{ width: '140px' }}>Progreso</th>
                             <th style={{ width: '180px' }}>Meta</th>
                             <th style={{}}>Descripción</th>
-                            <th style={{ width: '40px' }}></th>
+                            <th style={{ width: '60px' }}></th>
                         </tr>
                     </thead>
                     <tbody id="tasks-body">
