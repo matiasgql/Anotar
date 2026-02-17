@@ -24,7 +24,7 @@ export default defineConfig({
                 display: 'standalone',
                 icons: [
                     {
-                        src: 'Anotar.svg',
+                        src: '/Anotar.svg',
                         sizes: 'any',
                         type: 'image/svg+xml',
                         purpose: 'any maskable'
