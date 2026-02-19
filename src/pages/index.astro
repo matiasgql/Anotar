@@ -1,7 +1,6 @@
 ---
-import "../styles/tasks.css";
+import "../styles/main.css";
 import TaskApp from "../components/TaskApp.jsx";
-import { pwaInfo } from "virtual:pwa-info";
 ---
 
 <html lang="en">
@@ -16,11 +15,11 @@ import { pwaInfo } from "virtual:pwa-info";
 			href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
 			rel="stylesheet"
 		/>
-		<title>Anotar - Tareas</title>
+		<title>Anotar</title>
 		<link rel="manifest" href="/manifest.webmanifest" />
 		<script src="/src/pwa.ts"></script>
 	</head>
 	<body>
-		<TaskApp client:load />
+		<TaskApp client:only="react" />
 	</body>
 </html>

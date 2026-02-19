@@ -38,13 +38,13 @@ export const ProgressBar = ({ progress, goal }) => {
     const isAchieved = progress >= goal;
 
     return (
-        <div className="progress-wrapper">
-            <div className="progress-bar-bg">
+        <div className="flex items-center w-full h-[26px]">
+            <div className="w-full h-[24px] bg-[rgba(0,0,0,0.1)] rounded-[12px] overflow-hidden relative box-border flex items-center justify-center dark:bg-[rgba(255,255,255,0.15)]">
                 <div
-                    className={`progress-bar-fill ${isAchieved ? 'achieved' : ''}`}
+                    className={`absolute top-0 left-0 h-full bg-primary w-0 transition-all duration-600 ease-[cubic-bezier(0.4,0,0.2,1)] z-[1] ${isAchieved ? 'bg-success' : ''}`}
                     style={{ width: `${percentage}%` }}
                 ></div>
-                <span className="progress-text">{percentage}%</span>
+                <span className="relative z-[2] text-[10px] font-bold text-[var(--text-primary)] pointer-events-none text-center mix-blend-normal">{percentage}%</span>
             </div>
         </div>
     );
@@ -65,20 +65,20 @@ export const Stepper = ({ value, onChange, min = 0, max, className = "" }) => {
     };
 
     return (
-        <div className={`stepper-group vertical ${className}`}>
+        <div className={`flex items-center bg-[rgba(0,0,0,0.03)] rounded-md p-0 h-7 box-border overflow-hidden border border-[rgba(0,0,0,0.1)] dark:bg-[rgba(255,255,255,0.05)] dark:border-[rgba(255,255,255,0.15)] pr-0 shrink-0 ${className}`}>
             <input
                 type="number"
-                className="goal-input"
+                className="w-8 border-none bg-transparent text-center text-[var(--text-primary)] text-sm font-semibold outline-none px-1 appearance-[textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
                 value={value ?? ''}
                 onChange={(e) => onChange(e.target.value)}
                 min={min}
                 max={max}
             />
-            <div className="stepper-controls">
-                <button type="button" className="step-btn" onClick={handleIncrement}>
+            <div className="flex flex-col border-l border-[rgba(0,0,0,0.1)] bg-[rgba(0,0,0,0.1)] gap-px dark:border-[rgba(255,255,255,0.15)] dark:bg-[rgba(255,255,255,0.15)] shrink-0">
+                <button type="button" className="bg-surface-light border-none text-primary w-5 h-[13.5px] flex items-center justify-center cursor-pointer text-[8px] transition-colors duration-200 hover:bg-[rgba(0,0,0,0.04)] dark:bg-[#1c1c1e] dark:hover:bg-[rgba(255,255,255,0.08)]" onClick={handleIncrement}>
                     {ICONS.chevronUp}
                 </button>
-                <button type="button" className="step-btn" onClick={handleDecrement}>
+                <button type="button" className="bg-surface-light border-none text-primary w-5 h-[13.5px] flex items-center justify-center cursor-pointer text-[8px] transition-colors duration-200 hover:bg-[rgba(0,0,0,0.04)] dark:bg-[#1c1c1e] dark:hover:bg-[rgba(255,255,255,0.08)]" onClick={handleDecrement}>
                     {ICONS.chevronDown}
                 </button>
             </div>

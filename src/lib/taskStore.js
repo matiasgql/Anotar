@@ -54,7 +54,6 @@ export class TaskStore {
             }
 
             const data = await response.json();
-            console.log('Tareas cargadas exitosamente:', data);
 
             let rawItems = data.Items || (Array.isArray(data) ? data : []);
 
